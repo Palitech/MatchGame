@@ -48,21 +48,35 @@ namespace MatchGame
 
         private void SetUpGame()
         {
-            List<string> animalEmoji = new List<string>()
+/*            List<string> animalEmoji = new List<string>()
             {
                 "🦎", "🦎", "🐶","🐶", "🐸", "🐸", "🦝","🦝", "🐎","🐎", "🐘","🐘", "🦈","🦈", "🐒","🐒"
+            };*/
+            List<string> animalEmoji2 = new List<string>()
+            {
+                "🦎", "🐶", "🐸", "🦝", "🐎", "🐘", "🦈", "🐒", "🐍","🐿", "🦥", "🦀", "🍤", "🐙", "🦅", "🐇", "🦁", "🐼", "🦌", "🐳", "🐢", "🐷"
             };
+            List<string> animalEmojsiUsed = new List<string>();
+
             //animalEmoji.Add();
             var random = new Random();
+            //Create list of 8 pairs of emojis from animalEmoji2
+            for (int i = 0; i < 8; i++)
+            {
+                    int index = random.Next(animalEmoji2.Count);
+                animalEmojsiUsed.Add(animalEmoji2[index]);
+                animalEmojsiUsed.Add(animalEmoji2[index]);
+                animalEmoji2.RemoveAt(index);
+            }
             foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>()) 
             {
                 if (textBlock.Name != "timeTextBlock")
                 {
                     textBlock.Visibility = Visibility.Visible;
-                    int index = random.Next(animalEmoji.Count);
-                    string nextEmoji = animalEmoji[index];
+                    int index = random.Next(animalEmojsiUsed.Count);
+                    string nextEmoji = animalEmojsiUsed[index];
                     textBlock.Text = nextEmoji;
-                    animalEmoji.RemoveAt(index);
+                    animalEmojsiUsed.RemoveAt(index);
                 }
 
             }
