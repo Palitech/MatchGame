@@ -42,16 +42,13 @@ namespace MatchGame
             if (matchesFound == 8)
             {
                 timer.Stop();
-                timeTextBlock.Text = timeTextBlock.Text + " = Play again?";
+                timeTextBlock.Text = timeTextBlock.Text + ". Play again?";
             }
         }
 
         private void SetUpGame()
         {
-/*            List<string> animalEmoji = new List<string>()
-            {
-                "🦎", "🦎", "🐶","🐶", "🐸", "🐸", "🦝","🦝", "🐎","🐎", "🐘","🐘", "🦈","🦈", "🐒","🐒"
-            };*/
+            const int matchCount = 8;
             List<string> animalEmoji2 = new List<string>()
             {
                 "🦎", "🐶", "🐸", "🦝", "🐎", "🐘", "🦈", "🐒", "🐍","🐿", "🦥", "🦀", "🍤", "🐙", "🦅", "🐇", "🦁", "🐼", "🦌", "🐳", "🐢", "🐷"
@@ -60,10 +57,10 @@ namespace MatchGame
 
             //animalEmoji.Add();
             var random = new Random();
-            //Create list of 8 pairs of emojis from animalEmoji2
-            for (int i = 0; i < 8; i++)
+            //Create list of pairs of emojis from animalEmoji2 equal to matchCount
+            for (int i = 0; i < matchCount; i++)
             {
-                    int index = random.Next(animalEmoji2.Count);
+                int index = random.Next(animalEmoji2.Count);
                 animalEmojsiUsed.Add(animalEmoji2[index]);
                 animalEmojsiUsed.Add(animalEmoji2[index]);
                 animalEmoji2.RemoveAt(index);
